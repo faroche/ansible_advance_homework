@@ -1,3 +1,4 @@
+---
 - name: Create CI CD Workflow
   command: |
     tower-cli workflow create -n {{workflow_template_name}} --organization {{org_name}}
