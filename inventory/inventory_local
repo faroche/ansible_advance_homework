@@ -1,0 +1,11 @@
+stion_tower]
+bastion.e4ea.example.opentlc.com
+
+[workstation]
+workstation-a879.rhpds.opentlc.com
+
+[all:vars]
+ansible_user=francisco.aroche@atos.net
+ansible_ssh_private_key_file=/root/.ssh/e4eakey.pem
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
