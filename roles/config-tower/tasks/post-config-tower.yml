@@ -1,5 +1,14 @@
-#- name: Create Homework Assignment project 
-# Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml
+---
+- name: Create Homework Assignment project
+  tower_project:
+    name: "{{proj_name}}"
+    description: "{{proj_description}}"
+    organization: "{{org_name}}"
+    state: present
+    scm_type: git
+    scm_url: https://github.com/faroche/ansible_advance_homework    
+    scm_update_on_launch: yes
+    scm_branch: master
 
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
@@ -11,7 +20,6 @@
     tower_username: admin
     tower_password: r3dh4t1!
     ssh_key_data: "{{ lookup('file', '/root/.ssh/openstack.pem') }}"
-    ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
 
 - name: Create Inventory
@@ -41,7 +49,7 @@
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
-    ssh_key_data: "{{ lookup('file', '/root/.ssh/e4eakey.pem') }}"
+    ssh_key_data: "{{ lookup('file', '/root/.ssh/mykey.pem') }}"
     username: "{{ opentlc_login }}"
     become_method: sudo
 
